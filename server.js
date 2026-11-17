@@ -28,6 +28,20 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "SurveyBack API is running successfully",
+    status: "online",
+    endpoints: [
+      "/health",
+      "/api/auth",
+      "/api/survey",
+      "/api/activation"
+    ]
+  });
+});
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", require("./routes/authRoutes"));
